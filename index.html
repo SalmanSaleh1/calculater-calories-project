@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>Calculators calories</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css"> 
+        
+        <script src="calc.js"></script>
+    </head>
+    <body>
+        
+             <div>  
+              <img src="https://i.ibb.co/DQBgzRy/logo.jpg" alt="logo" width="150" height="150">  
+            <p>A calorie is a unit of energy. In nutrition,
+            calories refer to the energy people get from the food and drink they consume,
+            and the energy they use in physical activity.</p>       
+            
+            <br>
+            
+            <h3> Fast facts on calories: </h3>
+            <ul>
+                <li>Foods high in energy but low in nutritional value provide empty calories.</li>
+                <li>Everyone requires different amounts of energy each day, depending on age, sex, size, and activity level.</li>
+                <li>Calories are essential for human health. The key is consuming the right amount.</li>
+            </ul>
+            
+            <br>
+         
+        <form>
+            <p>Age:
+                <input type="text" name="age" id="age">
+            </p>
+            
+         
+            
+            <p>Gender:</p>
+                
+                <input type="radio" name="gender" id="male" >
+                <label for="male">male</label>
+                <input type="radio" name="gender" id="female"  >
+                <label for="female">female</label>
+            
+           
+            
+            <p>Height:
+                <input type="text" id="height" placeholder="                                            cm">
+            </p>
+ 
+           
+            
+            <p>Weight:
+                <input type="text"  id="weight" placeholder="                                             kg">
+            </p>
+            
+            
+          
+            
+            <label>Activity:</label>
+            <select id="SelectActive">
+                
+                <option value="Sedentary">No exercise </option>  
+                <option value="Lightly" >Exercise 1-3times/week</option>
+                <option value="Moderately" >Exercise 3-5times/week</option>
+                <option value="Active" >Exercise 6-7times/week</option>
+                <option value="Very" >Extra Active: very intense exercise daily, or physical job</option>
+            </select>
+            
+            <p>kcal per day:</p><p style="background-color:#b4c1b8; color:#fff;padding:8px 15px;margin:5px;border-radius:10px; width:5%;" id="totlCals"> </p> 
+            
+            <br><br>
+            <button type="button" onclick="calc()">Submit</button>
+            <input type="reset" value="Clear">
+              </form>
+           
+            
+      
+             
+        
+            
+            <h5>Thank you for using this app,
+                if you have any questions or comments 
+                you’ll find me on<a href="https://twitter.com/SlomDiary_" >
+                
+                <img src="https://i.ibb.co/tq3KV7s/twitter2.png" alt="twitter.com"
+                     width="25" height="25">    
+            </a> </h5>
+            
+            
+            
+        </div>
+        
+        <script>
+        function calc(){
+        var age=parseInt(document.getElementById("age").value);
+        var height=parseInt(document.getElementById("height").value);
+        var weight=parseInt(document.getElementById("weight").value);
+        var male=document.getElementById("male");
+        var female=document.getElementById("female");
+        var result=0;
+        var act=document.getElementById("SelectActive").value;
+        
+        
+        if(document.getElementById("male").checked){
+         result=66+(13.7*weight)+(5*height)-(6.8*age);   
+        }else if(document.getElementById("female").checked){
+        result=655+(9.6*weight)+(1.8*height)-(4.7*age);
+        }
+        
+        if(act==="Sedentary"){
+          result=result*1.2;  
+        }else if(act==="Lightly"){
+            result=result*1.375;
+        }else if(act==="Moderately"){
+           result=result*1.55; 
+        }else if(act==="Active"){
+            result=result*1.725;
+        }else if(act==="Very"){
+            result=result*1.9;
+        }
+        
+       document.getElementById("totlCals").innerHTML=Math.round(result);
+    }   
+        </script>
+        
+        
+        
+        
+    </body>
+</html>
